@@ -1,14 +1,69 @@
 #include QMK_KEYBOARD_H
 
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT_ortho_5x6(
-        KC_EQL,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-        KC_DEL,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-        KC_BSPC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                 KC_LCTL, KC_LALT, KC_LGUI, KC_LEFT, KC_RGHT,             KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, KC_DEL
+enum LAYERS {
+    QWERTY,
+    MIRROR,
+    EXTRA,
+    TRNS
+};
 
+    
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [QWERTY] = LAYOUT(
+        KC_GRV,    KC_1,    KC_2,      KC_3,    KC_4,    KC_5,             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
+        KC_LBRC,   KC_Q,    KC_W,      KC_E,    KC_R,    KC_T,             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_RBRC,
+        KC_EQL,    KC_A,    KC_S,      KC_D,    KC_F,    KC_G,             KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        MO(EXTRA), KC_Z,    KC_X,      KC_C,    KC_V,    KC_B,             KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
+        MT(KC_LALT,KC_DOWN), LT(MIRROR,KC_NO),  
+        KC_LGUI,  
+        MT(KC_LSFT,KC_TAB), MT(KC_LCTL,KC_UP),
+
+        KC_BACKSPACE,  KC_ENTER, 
+        KC_NO,  
+        KC_SPC,   KC_TAB
+    ),
+    [MIRROR] = LAYOUT(
+        KC_MINS,   KC_0,      KC_9,    KC_8,    KC_7,    KC_6,            KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,
+        KC_RBRC,  KC_P,      KC_O,    KC_I,    KC_U,    KC_Y,            KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,
+        KC_QUOT,  KC_SCLN,   KC_L,    KC_K,    KC_J,    KC_H,            KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,
+        KC_BSLS,  KC_SLSH,   KC_DOT,  KC_COMM, KC_M,    KC_N,            KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,
+        MT(KC_LALT,KC_LEFT), KC_TRNS,   
+        MT(KC_LGUI,KC_SPC),  
+        MT(KC_LSFT,KC_BSPC), MT(KC_LCTL,KC_RIGHT),     
+
+        KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  
+        KC_TRNS,   KC_TRNS
+    ),
+    [EXTRA] = LAYOUT(
+        KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+        KC_TRNS,  KC_BRIU,   KC_F1,      KC_F2,      KC_F3,      KC_F4,         KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+        KC_TRNS,  KC_BRID,   KC_F5,      KC_F6,      KC_F7,      KC_F8,         KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+        KC_TRNS,  KC_PSCR,   KC_F9,      KC_F10,      KC_F11,     KC_F12,         KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+        KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,                         
+        KC_TRNS,  KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS
+    ),
+    [TRNS] = LAYOUT(
+        KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+        KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+        KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+        KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_TRNS,    KC_TRNS,    KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,                         
+        KC_TRNS,  KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS
     )
 };
 
+const uint16_t PROGMEM K_ENT[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM K_DEL[] = {KC_X, KC_F, COMBO_END};
+const uint16_t PROGMEM K_ESC[] = {KC_W, KC_F, COMBO_END};
+const uint16_t PROGMEM K_PGUP[] = {KC_W, KC_R, COMBO_END};
+const uint16_t PROGMEM K_PGDN[] = {KC_X, KC_V, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(K_ENT, KC_ENT),
+    COMBO(K_DEL, KC_DEL), 
+    COMBO(K_ESC, KC_ESC), 
+    COMBO(K_PGUP, KC_PGUP), 
+    COMBO(K_PGDN, KC_PGDN), 
+};
