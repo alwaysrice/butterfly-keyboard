@@ -1,4 +1,4 @@
-### Rising Keyboard
+## Butterfly Keyboard
 
 ![](pictures/butterfly.jpg)
 
