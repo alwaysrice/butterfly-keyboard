@@ -1,6 +1,6 @@
 ### Rising Keyboard
 
-![[pictures/rising-front.jpg]]
+![](pictures/butterfly.jpg)
 
 ### Compiling
 ```
