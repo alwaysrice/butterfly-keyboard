@@ -7,16 +7,15 @@ enum LAYERS {
     EXTRA,
     TRNS
 };
-  
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [QWERTY] = LAYOUT(
         KC_GRV,    KC_1,    KC_2,      KC_3,    KC_4,    KC_5,             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
         KC_LBRC,   KC_Q,    KC_W,      KC_E,    KC_R,    KC_T,             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_RBRC,
         KC_EQL,    KC_A,    KC_S,      KC_D,    KC_F,    KC_G,             KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-        MO(EXTRA), KC_Z,    KC_X,      KC_C,    KC_V,    KC_B,             KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
-        MT(KC_LALT,KC_DOWN), LT(MIRROR,KC_NO),  // uper right and lower right
+        LT(EXTRA,KC_TAB), KC_Z,    KC_X,      KC_C,    KC_V,    KC_B,             KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
+        MT(MOD_LSFT,KC_LEFT), LT(MIRROR,KC_RIGHT),  // lower left and lower right
         KC_LGUI,  // tip
-        MT(KC_LSFT,KC_TAB), MT(KC_LCTL,KC_UP),  // lower left and uper left
+        MT(MOD_LCTL,KC_DOWN), MT(MOD_LALT,KC_UP),  // upper left and upper right
 
         KC_TAB,  KC_BACKSPACE, // uper left and right
         KC_ENTER,  // tip
@@ -27,13 +26,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_RBRC,  KC_P,      KC_O,    KC_I,    KC_U,    KC_Y,            KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,
         KC_QUOT,  KC_SCLN,   KC_L,    KC_K,    KC_J,    KC_H,            KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,
         KC_BSLS,  KC_SLSH,   KC_DOT,  KC_COMM, KC_M,    KC_N,            KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,
-        MT(KC_LALT,KC_LEFT), KC_TRNS,   
-        MT(KC_LGUI,KC_SPC),  
-        MT(KC_LSFT,KC_BSPC), MT(KC_LCTL,KC_RIGHT),     
+        KC_TRNS,  KC_TRNS, 
+        KC_SPC,  
+        KC_TRNS,   KC_TRNS,  
 
         KC_TRNS,  KC_TRNS, 
         KC_TRNS,  
-        KC_TRNS,   KC_TRNS
+        KC_TRNS,   KC_TRNS   
     ),
     [EXTRA] = LAYOUT(
         KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
