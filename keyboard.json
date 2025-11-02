@@ -29,7 +29,6 @@
         "command": false,
         "console": true,
         "extrakey": true,
-        "mousekey": true
     },
 
     "processor": "RP2040",
